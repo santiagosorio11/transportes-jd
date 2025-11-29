@@ -1,75 +1,74 @@
-// Routes Data - Focused on Colombia and the Coast
+// Routes Data - From Montería
 const routes = [
     {
         id: 1,
-        name: "Cartagena - Barranquilla",
-        time: "2 horas",
-        distance: "120 km",
-        center: [10.680, -75.170], // Between both cities
-        zoom: 9,
+        name: "Montería - Cartagena",
+        time: "2.5 horas",
+        distance: "180 km",
+        center: [9.5700, -75.6800], // Between Montería and Cartagena
+        zoom: 8,
         points: [
-            [10.3910, -75.4794], // Cartagena
-            [10.9685, -74.7813]  // Barranquilla
+            [8.7500, -75.8814], // Montería
+            [10.3910, -75.4794]  // Cartagena
         ]
     },
     {
         id: 2,
-        name: "Cartagena - Santa Marta",
-        time: "4 horas",
-        distance: "226 km",
-        center: [10.800, -74.800],
+        name: "Montería - Barranquilla",
+        time: "2 horas",
+        distance: "140 km",
+        center: [9.5700, -75.3300], // Between Montería and Barranquilla
         zoom: 8,
         points: [
-            [10.3910, -75.4794], // Cartagena
-            [10.9685, -74.7813], // Barranquilla (Way point)
-            [11.2408, -74.1990]  // Santa Marta
+            [8.7500, -75.8814], // Montería
+            [10.9685, -74.7813]  // Barranquilla
         ]
     },
     {
         id: 3,
-        name: "Barranquilla - Santa Marta",
-        time: "2 horas",
-        distance: "105 km",
-        center: [11.100, -74.500],
+        name: "Montería - Sincelejo",
+        time: "1 hora",
+        distance: "85 km",
+        center: [9.2500, -75.4300], // Between Montería and Sincelejo
         zoom: 9,
         points: [
-            [10.9685, -74.7813], // Barranquilla
-            [11.2408, -74.1990]  // Santa Marta
+            [8.7500, -75.8814], // Montería
+            [9.3000, -75.4000]  // Sincelejo
         ]
     },
     {
         id: 4,
-        name: "Tour Tayrona (Desde Santa Marta)",
-        time: "45 min",
-        distance: "15 km",
-        center: [11.280, -74.150],
-        zoom: 11,
+        name: "Montería - Medellín",
+        time: "6 - 7 horas",
+        distance: "400 km",
+        center: [7.5000, -75.7000], // Between Montería and Medellín
+        zoom: 7,
         points: [
-            [11.2408, -74.1990], // Santa Marta
-            [11.3156, -74.0717]  // Tayrona
+            [8.7500, -75.8814], // Montería
+            [6.2476, -75.5658]  // Medellín
         ]
     },
     {
         id: 5,
-        name: "Medellín - Costa Atlántica",
-        time: "12 - 14 horas",
-        distance: "700 km",
-        center: [8.500, -75.000],
-        zoom: 6,
+        name: "Montería - Lorica",
+        time: "45 min",
+        distance: "35 km",
+        center: [9.0500, -75.8300], // Between Montería and Lorica
+        zoom: 10,
         points: [
-            [6.2476, -75.5658], // Medellin
-            [10.3910, -75.4794] // Cartagena
+            [8.7500, -75.8814], // Montería
+            [9.2333, -75.8167]  // Lorica
         ]
     }
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Initialize Map
-    // Default view: Colombian Coast
+    // Default view: Montería area
     // Fix: Disable scrollWheelZoom to prevent page scroll blocking
     const map = L.map('map', {
         scrollWheelZoom: false
-    }).setView([10.800, -74.800], 8);
+    }).setView([8.7500, -75.8814], 9);
 
     // Enable scroll wheel zoom only after clicking on the map
     map.on('focus', () => { map.scrollWheelZoom.enable(); });
@@ -231,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         } else {
             routeInfo.classList.add('hidden');
-            map.flyTo([10.800, -74.800], 8); // Reset to default view
+            map.flyTo([8.7500, -75.8814], 9); // Reset to default view (Montería)
         }
     });
 
