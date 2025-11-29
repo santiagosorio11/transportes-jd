@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transportes JD - Viajes Seguros en Colombia</title>
+    <meta name="description" content="Servicio de transporte privado y turismo en Colombia y la Costa. Viajes seguros, cómodos y puntuales.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <span class="hidden-mobile">Transporte seguro y confiable en toda Colombia</span>
+            <div class="top-bar-right">
+                <span class="pulse-text">¡Reserva tu viaje a la Costa ahora!</span>
+                <a href="https://wa.me/573000000000" target="_blank" class="top-contact">
+                    <i data-lucide="phone" width="16"></i>
+                    <span>+57 300 000 0000</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container navbar-content">
+            <a href="#" class="logo">
+                <i data-lucide="car-front" width="28"></i>
+                <span>TRANSPORTES JD</span>
+            </a>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="#home" class="nav-link">Inicio</a>
+                <a href="#services" class="nav-link">Servicios</a>
+                <a href="#vehicle" class="nav-link">Vehículo</a>
+                <a href="#routes" class="nav-link">Rutas</a>
+                <a href="#contact" class="nav-link">Contacto</a>
+                <a href="https://wa.me/573000000000" class="btn-nav">Reservar</a>
+            </div>
+
+            <button class="menu-btn" id="menuBtn" aria-label="Menu">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <span class="badge">Experiencia Premium</span>
+            <h1>Descubre Colombia <br> <span class="text-highlight">Confort y Seguridad</span></h1>
+            <p>Tu conductor privado experto en rutas de la Costa y el interior. Viajes personalizados puerta a puerta.</p>
+            <div class="hero-btns">
+                <a href="https://wa.me/573000000000" class="btn btn-primary">
+                    Reservar Ahora <i data-lucide="arrow-right" width="20"></i>
+                </a>
+                <a href="#routes" class="btn btn-outline">Ver Rutas</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nuestros Servicios</h2>
+                <p>Soluciones de transporte adaptadas a tus necesidades turísticas y ejecutivas.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="icon-box"><i data-lucide="plane"></i></div>
+                    <h3>Traslados Aeropuerto</h3>
+                    <p>Recogida puntual en aeropuertos de la Costa (Cartagena, Barranquilla, Santa Marta) y el interior.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon-box"><i data-lucide="map"></i></div>
+                    <h3>Turismo Regional</h3>
+                    <p>Tours personalizados por los mejores destinos turísticos de Colombia.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon-box"><i data-lucide="clock"></i></div>
+                    <h3>Disponibilidad 24/7</h3>
+                    <p>Servicio flexible a cualquier hora. Tu tiempo es nuestra prioridad.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon-box"><i data-lucide="shield-check"></i></div>
+                    <h3>Seguridad Total</h3>
+                    <p>Conductor profesional, vehículo asegurado y monitoreo constante.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vehicle Section -->
+    <section id="vehicle" class="section bg-light">
+        <div class="container vehicle-container">
+            <div class="vehicle-image">
+                <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=2070&auto=format&fit=crop" alt="Vehículo Confortable">
+                <div class="image-decoration"></div>
+            </div>
+            <div class="vehicle-info">
+                <span class="sub-title">Tu Comodidad es Primero</span>
+                <h2>Vehículo Moderno y Equipado</h2>
+                <p>Viaja con estilo en nuestro vehículo de última generación, mantenido meticulosamente para garantizar un viaje suave y seguro por las carreteras de Colombia.</p>
+                
+                <ul class="features-list">
+                    <li><i data-lucide="check-circle"></i> Aire Acondicionado Potente</li>
+                    <li><i data-lucide="check-circle"></i> Sillas Reclinables Confortables</li>
+                    <li><i data-lucide="check-circle"></i> Conexión Bluetooth y Cargadores</li>
+                    <li><i data-lucide="check-circle"></i> Amplio espacio para equipaje</li>
+                    <li><i data-lucide="check-circle"></i> Vidrios Polarizados</li>
+                    <li><i data-lucide="check-circle"></i> Seguro Todo Riesgo</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Routes Map Section -->
+    <section id="routes" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Rutas Frecuentes</h2>
+                <p>Explora nuestros trayectos más populares en la Costa y el interior del país.</p>
+            </div>
+
+            <div class="map-interface">
+                <div class="map-controls">
+                    <div class="control-group">
+                        <label for="routeSelect">Selecciona tu destino</label>
+                        <div class="select-wrapper">
+                            <select id="routeSelect">
+                                <option value="">-- Selecciona una ruta --</option>
+                                <!-- Options populated by JS -->
+                            </select>
+                            <i data-lucide="chevron-down" class="select-icon"></i>
+                        </div>
+                    </div>
+
+                    <div id="routeInfo" class="route-info-card hidden">
+                        <h3 id="routeName">Nombre Ruta</h3>
+                        <div class="info-row">
+                            <i data-lucide="clock"></i>
+                            <div>
+                                <span class="label">Tiempo Estimado</span>
+                                <span class="value" id="routeTime">00 min</span>
+                            </div>
+                        </div>
+                        <div class="info-row">
+                            <i data-lucide="map-pin"></i>
+                            <div>
+                                <span class="label">Distancia Aprox.</span>
+                                <span class="value" id="routeDistance">0 km</span>
+                            </div>
+                        </div>
+                        <a href="#" id="quoteBtn" target="_blank" class="btn btn-primary full-width">Cotizar Ruta</a>
+                    </div>
+                </div>
+                
+                <div class="map-container">
+                    <div id="map"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container footer-content">
+            <div class="footer-col">
+                <h3>Transportes JD</h3>
+                <p>Tu aliado de confianza para recorrer Colombia. Seguridad, puntualidad y confort en cada kilómetro.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Contacto</h3>
+                <p><i data-lucide="phone"></i> +57 300 000 0000</p>
+                <p><i data-lucide="mail"></i> contacto@transportesjd.com</p>
+                <p><i data-lucide="map-pin"></i> Barranquilla / Cartagena / Santa Marta</p>
+            </div>
+            <div class="footer-col">
+                <h3>Redes Sociales</h3>
+                <div class="social-links">
+                    <a href="#"><i data-lucide="instagram"></i></a>
+                    <a href="#"><i data-lucide="facebook"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Transportes JD. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/573000000000" target="_blank" class="whatsapp-float" aria-label="Chat WhatsApp">
+        <i data-lucide="message-circle" width="32" height="32"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="js/main.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
