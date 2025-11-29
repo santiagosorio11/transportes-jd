@@ -1,36 +1,48 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transportes JD - Viajes Seguros en Colombia</title>
-    <meta name="description" content="Servicio de transporte privado y turismo en Colombia y la Costa. Viajes seguros, cómodos y puntuales.">
-    
+    <meta name="description"
+        content="Servicio de transporte privado y turismo en Colombia y la Costa. Viajes seguros, cómodos y puntuales.">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
     <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
-    
+
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
+
 <body>
 
     <!-- Top Bar -->
     <div class="top-bar">
         <div class="container top-bar-content">
-            <span class="hidden-mobile">Transporte seguro y confiable en toda Colombia</span>
+            <div class="carousel-container">
+                <div class="carousel-track" id="topBarCarousel">
+                    <span class="carousel-item">Transporte seguro y confiable en toda Colombia</span>
+                    <span class="carousel-item">Servicio disponible 24/7 para tus viajes</span>
+                    <span class="carousel-item">Especialistas en rutas de la Costa y el Interior</span>
+                </div>
+            </div>
             <div class="top-bar-right">
-                <span class="pulse-text">¡Reserva tu viaje a la Costa ahora!</span>
-                <a href="https://wa.me/573000000000" target="_blank" class="top-contact">
+                <span class="pulse-text hidden-mobile">¡Reserva tu viaje a la Costa ahora!</span>
+                <a href="https://wa.me/573006262199" target="_blank" class="top-contact">
                     <i data-lucide="phone" width="16"></i>
-                    <span>+57 300 000 0000</span>
+                    <span>+57 300 626 2199</span>
                 </a>
             </div>
         </div>
@@ -43,14 +55,15 @@
                 <i data-lucide="car-front" width="28"></i>
                 <span>TRANSPORTES JD</span>
             </a>
-            
+
             <div class="nav-links" id="navLinks">
                 <a href="#home" class="nav-link">Inicio</a>
+                <a href="#driver" class="nav-link">Conductor</a>
                 <a href="#services" class="nav-link">Servicios</a>
                 <a href="#vehicle" class="nav-link">Vehículo</a>
                 <a href="#routes" class="nav-link">Rutas</a>
                 <a href="#contact" class="nav-link">Contacto</a>
-                <a href="https://wa.me/573000000000" class="btn-nav">Reservar</a>
+                <a href="https://wa.me/573006262199" class="btn-nav">Reservar</a>
             </div>
 
             <button class="menu-btn" id="menuBtn" aria-label="Menu">
@@ -62,16 +75,58 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-bg"></div>
-        <div class="hero-overlay"></div>
-        <div class="container hero-content">
-            <span class="badge">Experiencia Premium</span>
+        <div class="container hero-content scroll-reveal">
             <h1>Descubre Colombia <br> <span class="text-highlight">Confort y Seguridad</span></h1>
-            <p>Tu conductor privado experto en rutas de la Costa y el interior. Viajes personalizados puerta a puerta.</p>
+            <p>Tu conductor privado experto en rutas de la Costa y el interior.<br>Viajes personalizados puerta a
+                puerta.
+            </p>
             <div class="hero-btns">
-                <a href="https://wa.me/573000000000" class="btn btn-primary">
+                <a href="https://wa.me/573006262199" class="btn btn-primary">
                     Reservar Ahora <i data-lucide="arrow-right" width="20"></i>
                 </a>
                 <a href="#routes" class="btn btn-outline">Ver Rutas</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Driver Section -->
+    <section id="driver" class="section bg-light">
+        <div class="container">
+            <div class="driver-container">
+                <div class="driver-image scroll-reveal">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop"
+                        alt="Conductor Profesional">
+                    <div class="driver-badge">
+                        <span class="years">10+</span>
+                        <span class="text">Años de<br>Experiencia</span>
+                    </div>
+                </div>
+                <div class="driver-info scroll-reveal delay-200">
+                    <span class="sub-title">Tu Conductor de Confianza</span>
+                    <h2>Hola, soy Juan David</h2>
+                    <p class="lead">"Mi compromiso es llevarte a tu destino con la mayor seguridad, puntualidad y
+                        amabilidad posible."</p>
+                    <p>Como conductor profesional independiente, me especializo en brindar un servicio personalizado que
+                        las grandes agencias no pueden ofrecer. Conozco cada carretera de la Costa y el interior,
+                        garantizando no solo un viaje, sino una experiencia tranquila y agradable.</p>
+
+                    <div class="driver-stats">
+                        <div class="stat-item">
+                            <i data-lucide="user-check"></i>
+                            <span>Trato Amable</span>
+                        </div>
+                        <div class="stat-item">
+                            <i data-lucide="map"></i>
+                            <span>Experto en Rutas</span>
+                        </div>
+                        <div class="stat-item">
+                            <i data-lucide="award"></i>
+                            <span>Conducción Segura</span>
+                        </div>
+                    </div>
+
+                    <a href="https://wa.me/573006262199" class="btn btn-primary mt-4">Hablar con Juan David</a>
+                </div>
             </div>
         </div>
     </section>
@@ -83,12 +138,13 @@
                 <h2>Nuestros Servicios</h2>
                 <p>Soluciones de transporte adaptadas a tus necesidades turísticas y ejecutivas.</p>
             </div>
-            
+
             <div class="services-grid">
                 <div class="service-card">
                     <div class="icon-box"><i data-lucide="plane"></i></div>
                     <h3>Traslados Aeropuerto</h3>
-                    <p>Recogida puntual en aeropuertos de la Costa (Cartagena, Barranquilla, Santa Marta) y el interior.</p>
+                    <p>Recogida puntual en aeropuertos de la Costa (Cartagena, Barranquilla, Santa Marta) y el interior.
+                    </p>
                 </div>
                 <div class="service-card">
                     <div class="icon-box"><i data-lucide="map"></i></div>
@@ -96,14 +152,9 @@
                     <p>Tours personalizados por los mejores destinos turísticos de Colombia.</p>
                 </div>
                 <div class="service-card">
-                    <div class="icon-box"><i data-lucide="clock"></i></div>
-                    <h3>Disponibilidad 24/7</h3>
-                    <p>Servicio flexible a cualquier hora. Tu tiempo es nuestra prioridad.</p>
-                </div>
-                <div class="service-card">
                     <div class="icon-box"><i data-lucide="shield-check"></i></div>
-                    <h3>Seguridad Total</h3>
-                    <p>Conductor profesional, vehículo asegurado y monitoreo constante.</p>
+                    <h3>Servicio 24/7</h3>
+                    <p>Disponibilidad completa con conductor profesional, vehículo asegurado y monitoreo constante.</p>
                 </div>
             </div>
         </div>
@@ -113,14 +164,16 @@
     <section id="vehicle" class="section bg-light">
         <div class="container vehicle-container">
             <div class="vehicle-image">
-                <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=2070&auto=format&fit=crop" alt="Vehículo Confortable">
+                <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2069&auto=format&fit=crop"
+                    alt="Van de Transporte">
                 <div class="image-decoration"></div>
             </div>
             <div class="vehicle-info">
                 <span class="sub-title">Tu Comodidad es Primero</span>
                 <h2>Vehículo Moderno y Equipado</h2>
-                <p>Viaja con estilo en nuestro vehículo de última generación, mantenido meticulosamente para garantizar un viaje suave y seguro por las carreteras de Colombia.</p>
-                
+                <p>Viaja con estilo en nuestro vehículo de última generación, mantenido meticulosamente para garantizar
+                    un viaje suave y seguro por las carreteras de Colombia.</p>
+
                 <ul class="features-list">
                     <li><i data-lucide="check-circle"></i> Aire Acondicionado Potente</li>
                     <li><i data-lucide="check-circle"></i> Sillas Reclinables Confortables</li>
@@ -170,13 +223,132 @@
                                 <span class="value" id="routeDistance">0 km</span>
                             </div>
                         </div>
-                        <a href="#" id="quoteBtn" target="_blank" class="btn btn-primary full-width">Cotizar Ruta</a>
                     </div>
                 </div>
-                
+
                 <div class="map-container">
                     <div id="map"></div>
                 </div>
+            </div>
+
+            <!-- Quote Form -->
+            <div class="quote-form-container">
+                <div class="quote-form-header">
+                    <h3>Solicitar Cotización</h3>
+                    <p>Complete el formulario y le enviaremos una cotización personalizada por WhatsApp</p>
+                </div>
+
+                <form id="quoteForm" class="quote-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="origin">Origen</label>
+                            <div class="select-wrapper">
+                                <select id="origin" name="origin" required>
+                                    <option value="">Seleccione origen</option>
+                                    <option value="Cartagena">Cartagena</option>
+                                    <option value="Barranquilla">Barranquilla</option>
+                                    <option value="Santa Marta">Santa Marta</option>
+                                    <option value="Medellín">Medellín</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                                <i data-lucide="chevron-down" class="select-icon"></i>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="destination">Destino</label>
+                            <div class="select-wrapper">
+                                <select id="destination" name="destination" required>
+                                    <option value="">Seleccione destino</option>
+                                    <option value="Cartagena">Cartagena</option>
+                                    <option value="Barranquilla">Barranquilla</option>
+                                    <option value="Santa Marta">Santa Marta</option>
+                                    <option value="Tayrona">Parque Tayrona</option>
+                                    <option value="Medellín">Medellín</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                                <i data-lucide="chevron-down" class="select-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="date">Fecha del Viaje</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="time">Hora Aproximada</label>
+                            <input type="time" id="time" name="time" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="passengers">Número de Pasajeros</label>
+                            <div class="select-wrapper">
+                                <select id="passengers" name="passengers" required>
+                                    <option value="">Seleccione</option>
+                                    <option value="1">1 pasajero</option>
+                                    <option value="2">2 pasajeros</option>
+                                    <option value="3">3 pasajeros</option>
+                                    <option value="4">4 pasajeros</option>
+                                    <option value="5">5 pasajeros</option>
+                                    <option value="6">6 pasajeros</option>
+                                    <option value="7">7 pasajeros</option>
+                                    <option value="8">8 pasajeros</option>
+                                </select>
+                                <i data-lucide="chevron-down" class="select-icon"></i>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tripType">Tipo de Viaje</label>
+                            <div class="select-wrapper">
+                                <select id="tripType" name="tripType" required>
+                                    <option value="">Seleccione</option>
+                                    <option value="one-way">Solo Ida</option>
+                                    <option value="round-trip">Ida y Vuelta</option>
+                                    <option value="multi-day">Varios Días</option>
+                                </select>
+                                <i data-lucide="chevron-down" class="select-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="name">Nombre Completo</label>
+                            <input type="text" id="name" name="name" placeholder="Ingrese su nombre" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Teléfono / WhatsApp</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+57 300 000 0000" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email (Opcional)</label>
+                            <input type="email" id="email" name="email" placeholder="correo@ejemplo.com">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group full-width">
+                            <label for="notes">Notas Adicionales (Opcional)</label>
+                            <textarea id="notes" name="notes" rows="3"
+                                placeholder="Equipaje especial, paradas adicionales, etc."></textarea>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-submit">
+                        <i data-lucide="send"></i>
+                        Enviar Cotización por WhatsApp
+                    </button>
+                </form>
             </div>
         </div>
     </section>
@@ -186,11 +358,12 @@
         <div class="container footer-content">
             <div class="footer-col">
                 <h3>Transportes JD</h3>
-                <p>Tu aliado de confianza para recorrer Colombia. Seguridad, puntualidad y confort en cada kilómetro.</p>
+                <p>Tu aliado de confianza para recorrer Colombia. Seguridad, puntualidad y confort en cada kilómetro.
+                </p>
             </div>
             <div class="footer-col">
                 <h3>Contacto</h3>
-                <p><i data-lucide="phone"></i> +57 300 000 0000</p>
+                <p><i data-lucide="phone"></i> +57 300 626 2199</p>
                 <p><i data-lucide="mail"></i> contacto@transportesjd.com</p>
                 <p><i data-lucide="map-pin"></i> Barranquilla / Cartagena / Santa Marta</p>
             </div>
@@ -208,15 +381,63 @@
     </footer>
 
     <!-- Floating WhatsApp -->
-    <a href="https://wa.me/573000000000" target="_blank" class="whatsapp-float" aria-label="Chat WhatsApp">
-        <i data-lucide="message-circle" width="32" height="32"></i>
+    <a href="https://wa.me/573006262199" target="_blank" class="whatsapp-float" aria-label="Chat WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 175.216 175.552" width="32" height="32">
+            <defs>
+                <linearGradient id="b" x1="85.915" x2="86.535" y1="32.567" y2="137.092" gradientUnits="userSpaceOnUse">
+                    <stop offset="0" stop-color="#57d163"/>
+                    <stop offset="1" stop-color="#23b33a"/>
+                </linearGradient>
+                <filter id="a" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                    <feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+                    <feOffset dy="3"/>
+                    <feGaussianBlur stdDeviation="3"/>
+                    <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0"/>
+                    <feBlend in2="BackgroundImageFix" result="effect1_dropShadow"/>
+                    <feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+                </filter>
+            </defs>
+            <g filter="url(#a)">
+                <path fill="url(#b)" d="M9.093 0A9.093 9.093 0 000 9.093v157.366a9.093 9.093 0 009.093 9.093h157.366a9.093 9.093 0 009.093-9.093V9.093A9.093 9.093 0 00166.459 0H9.093z"/>
+            </g>
+            <path fill="#fff" fill-rule="evenodd" d="M87.831 41.583c-25.85 0-46.843 21.055-46.843 47.013 0 8.281 2.184 16.055 6.011 22.81l-6.428 23.32 23.913-6.281c6.532 3.576 14.025 5.714 22.017 5.714h.33c25.85 0 46.843-21.055 46.843-47.013-.033-25.958-21.026-47.013-46.843-47.013zm0 85.638c-7.389 0-14.309-2.052-20.227-5.596l-14.643 3.844 3.91-14.211c-3.576-5.777-5.47-12.348-5.47-19.243 0-21.363 17.378-38.751 38.775-38.751 21.396 0 38.774 17.388 38.774 38.751-0.033 21.363-17.411 38.751-39.119 38.996z"/>
+            <path d="M128.874 96.895c-.324-.163-1.915-0.946-2.21-1.055-.296-.108-.511-.163-.726.163-.215.325-.838 1.055-1.027 1.27-.189.216-.378.243-.701.081-.324-.163-1.365-0.504-2.6-1.606-.961-.857-1.611-1.915-1.8-2.239-.189-.324-.021-0.5.142-0.662.146-.146.324-.378.486-.567.162-.189.216-.324.324-.54.108-.216.054-0.406-0.027-0.567-.081-.162-.726-1.754-0.995-2.4-.26-.629-.524-.544-.726-0.554-.189-.011-.405-0.024-0.621-0.024s-.567.081-.837.405c-.27.325-1.027 1.003-1.027 2.445 0 1.442 1.05 2.836 1.196 3.034.146.198 2.065 3.148 5.009 4.428.695.307 1.239.49 1.66.626.711.229 1.358.196 1.87.119.569-.085 1.915-0.782 2.184-1.539.27-.757.27-1.405.189-1.539-.081-.135-.297-.216-.621-0.378z" fill="#fff"/>
+        </svg>
     </a>
 
     <!-- Scripts -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script src="js/main.js"></script>
     <script>
         lucide.createIcons();
+
+        // Quote Form Handler
+        document.getElementById('quoteForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+
+            // Build WhatsApp message
+            let message = `*Solicitud de Cotización - Transportes JD*\n\n`;
+            message += `📍 *Ruta:* ${data.origin} → ${data.destination}\n`;
+            message += `📅 *Fecha:* ${data.date}\n`;
+            message += `🕐 *Hora:* ${data.time}\n`;
+            message += `👥 *Pasajeros:* ${data.passengers}\n`;
+            message += `🚗 *Tipo:* ${data.tripType}\n\n`;
+            message += `*Datos de Contacto:*\n`;
+            message += `Nombre: ${data.name}\n`;
+            message += `Teléfono: ${data.phone}\n`;
+            if (data.email) message += `Email: ${data.email}\n`;
+            if (data.notes) message += `\n📝 *Notas:* ${data.notes}`;
+
+            // Encode and send to WhatsApp
+            const whatsappURL = `https://wa.me/573006262199?text=${encodeURIComponent(message)}`;
+            window.open(whatsappURL, '_blank');
+        });
     </script>
 </body>
+
 </html>
