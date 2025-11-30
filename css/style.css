@@ -157,6 +157,14 @@ p {
     gap: 1rem;
 }
 
+/* Desktop vs Mobile top bar toggles */
+.top-bar-desktop { display: block; }
+.topbar-mobile { display: none; }
+
+.topbar-reserve {
+    display: none;
+}
+
 .carousel-container {
     flex: 1;
     overflow: hidden;
@@ -211,6 +219,47 @@ p {
     align-items: center;
     gap: 0.5rem;
     font-weight: 600;
+}
+
+
+/* Mobile thin top bar (hidden on desktop) */
+.topbar-mobile {
+    display: none;
+    position: relative;
+    width: 100%;
+    height: 44px;
+    background: linear-gradient(90deg, rgba(30,64,175,0.95), rgba(59,130,246,0.95));
+    color: white;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    overflow: hidden;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.topbar-mobile-track {
+    display: flex;
+    gap: 2rem;
+    white-space: nowrap;
+    will-change: transform;
+    animation: slideLeft 12s linear infinite;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.topbar-item {
+    padding: 0 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-block;
+}
+
+/* mobile reserve buttons were consolidated into .topbar-reserve */
+
+@keyframes slideLeft {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-30%); }
 }
 
 .pulse-text {
@@ -460,6 +509,18 @@ p {
     font-size: 0.875rem;
     letter-spacing: 2px;
     margin-bottom: 1rem;
+}
+
+/* Ensure driver info column stacks and action buttons are centered */
+.driver-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.driver-info .mt-4 {
+    display: flex;
+    justify-content: center; /* center the action button in this column */
+    width: 100%;
 }
 
 .lead {
@@ -1059,6 +1120,25 @@ footer {
         font-size: clamp(0.75rem, 2vw, 0.85rem);
     }
 
+    /* Replace desktop carousel with thin horizontal mobile bar */
+    .carousel-container { display: none; }
+    .topbar-mobile { display: flex; }
+
+    /* Show only the thin topbar's reserve button on mobile */
+    .topbar-reserve { display: inline-flex; }
+
+    /* Hide desktop top bar on mobile */
+    .top-bar-desktop { display: none; }
+
+    /* Ensure mobile topbar occupies full width and is flush with nav */
+    .topbar-mobile {
+        width: 100%;
+        left: 0;
+        right: 0;
+        margin: 0;
+        z-index: 1001;
+    }
+
     /* Navbar */
     .navbar {
         z-index: 1001;
@@ -1118,13 +1198,14 @@ footer {
 
     /* Hero Responsive */
     .hero {
-        min-height: 70vh;
-        padding: 3rem 0 2rem;
+        min-height: 60vh;
+        padding: 2.5rem 0 1.5rem;
         margin-top: 0;
     }
 
     .hero-content {
-        padding: 1.5rem 0 2rem;
+        /* keep vertical padding but add horizontal padding so hero has side margins on mobile */
+        padding: 1.5rem 1rem 2rem;
         width: 100%;
     }
 
@@ -1140,16 +1221,35 @@ footer {
         line-height: 1.7;
     }
 
-    .hero-btns {
+    /* Center hero text and buttons on mobile so headings, paragraph and CTAs align visually */
+    .hero-content {
+        text-align: center;
+        display: flex;
         flex-direction: column;
+        align-items: center;
+    }
+
+    .hero h1,
+    .hero p {
+        text-align: center;
+    }
+
+    /* Make hero buttons responsive: keep them compact and allow them to sit side-by-side when space permits */
+    .hero-btns {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        justify-content: center;
         width: 100%;
-        gap: 1rem;
     }
 
     .hero-btns .btn {
-        width: 100%;
-        padding: 1rem 1.5rem;
-        font-size: clamp(0.9375rem, 3vw, 1rem);
+        /* Make hero CTAs size to their content on small screens and reduce lateral padding */
+        flex: 0 0 auto;
+        min-width: 0;
+        max-width: 260px;
+        padding: 0.6rem 0.9rem;
+        font-size: clamp(0.9rem, 3vw, 1rem);
         justify-content: center;
     }
 

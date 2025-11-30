@@ -60,19 +60,36 @@ const routes = [
             [9.2333, -75.8167]  // Lorica
         ]
     }
+    ,
+    {
+        id: 6,
+        name: "Montería - Coveñas",
+        time: "2 horas",
+        distance: "~150 km",
+        center: [9.0000, -75.8600], // approximate center between Montería and Coveñas
+        zoom: 9,
+        points: [
+            [8.7500, -75.8814], // Montería (reference)
+            [9.1250, -75.6600]  // Coveñas (approx coordinates)
+        ]
+    }
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Initialize Map
     // Default view: Montería area
-    // Fix: Disable scrollWheelZoom to prevent page scroll blocking
+    // Disable all user interactions so the map only moves programmatically
     const map = L.map('map', {
-        scrollWheelZoom: false
+        dragging: false,
+        touchZoom: false,
+        doubleClickZoom: false,
+        scrollWheelZoom: false,
+        boxZoom: false,
+        keyboard: false,
+        tap: false,
+        // keep zoom control visible if desired; user cannot interact with it
+        zoomControl: false
     }).setView([8.7500, -75.8814], 9);
-
-    // Enable scroll wheel zoom only after clicking on the map
-    map.on('focus', () => { map.scrollWheelZoom.enable(); });
-    map.on('blur', () => { map.scrollWheelZoom.disable(); });
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -90,6 +107,37 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentPolyline = null;
     let currentMarkers = [];
     let animatedSegments = [];
+    const drawSpeed = 150; // ms per segment during animated drawing
+
+    // Draw the star route (Montería - Coveñas) on initial load
+    (function drawStarRoute() {
+        const star = routes.find(r => /coveñ|covenas/i.test(r.name));
+        if (!star) return;
+
+        // Add dashed polyline for base map
+        currentPolyline = L.polyline(star.points, {
+            color: '#1e40af',
+            weight: 5,
+            opacity: 0.85,
+            dashArray: '15, 10',
+            lineCap: 'round',
+            lineJoin: 'round'
+        }).addTo(map);
+
+        // Fit to bounds so the route is visible on base map
+        const bounds = currentPolyline.getBounds();
+        if (bounds.isValid()) {
+            map.fitBounds(bounds, { padding: [40, 40], maxZoom: star.zoom });
+        }
+
+        // Add start/end markers
+        const startMarker = L.marker(star.points[0], { icon: carIcon }).addTo(map)
+            .bindPopup(`<b>Inicio:</b> ${star.name.split(' - ')[0]}`);
+        const endMarker = L.marker(star.points[star.points.length - 1], { icon: carIcon }).addTo(map)
+            .bindPopup(`<b>Destino:</b> ${star.name.split(' - ')[1] || 'Fin'}`);
+
+        currentMarkers.push(startMarker, endMarker);
+    })();
 
     // 2. Populate Dropdown
     const select = document.getElementById('routeSelect');
@@ -99,6 +147,12 @@ document.addEventListener('DOMContentLoaded', () => {
         option.textContent = route.name;
         select.appendChild(option);
     });
+
+    // Set default selected route to the star route (Montería - Coveñas) if present
+    const starRoute = routes.find(r => /coveñ|covenas/i.test(r.name));
+    if (starRoute) {
+        select.value = String(starRoute.id);
+    }
 
     // 3. Handle Route Selection
     const routeInfo = document.getElementById('routeInfo');
@@ -233,6 +287,15 @@ document.addEventListener('DOMContentLoaded', () => {
             map.flyTo([8.7500, -75.8814], 9); // Reset to default view (Montería)
         }
     });
+
+    // Trigger change on the selector to draw the default star route on load
+    if (select.value) {
+        // small timeout to ensure map/tiles are ready
+        setTimeout(() => {
+            const event = new Event('change');
+            select.dispatchEvent(event);
+        }, 300);
+    }
 
     // 4. Mobile Menu Toggle
     const menuBtn = document.getElementById('menuBtn');
