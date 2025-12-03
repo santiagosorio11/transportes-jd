@@ -392,4 +392,50 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.scroll-reveal').forEach(el => {
         observer.observe(el);
     });
+
+    // 7. Destinations Carousel (automatic every 5 seconds)
+    (function initDestinationsCarousel() {
+        const track = document.querySelector('.dest-track');
+        if (!track) return;
+        const slides = Array.from(track.children);
+        const prevBtn = document.querySelector('.dest-prev');
+        const nextBtn = document.querySelector('.dest-next');
+        let index = 0;
+        const total = slides.length;
+        const intervalMs = 5000; // 5 seconds
+        let timer = null;
+
+        function goTo(i) {
+            index = (i + total) % total;
+            track.style.transform = `translateX(-${index * 100}%)`;
+        }
+
+        function next() { goTo(index + 1); }
+        function prev() { goTo(index - 1); }
+
+        function startAuto() {
+            stopAuto();
+            timer = setInterval(next, intervalMs);
+        }
+
+        function stopAuto() {
+            if (timer) clearInterval(timer);
+            timer = null;
+        }
+
+        // Attach events
+        if (nextBtn) nextBtn.addEventListener('click', () => { next(); startAuto(); });
+        if (prevBtn) prevBtn.addEventListener('click', () => { prev(); startAuto(); });
+
+        // Pause on hover (desktop) for accessibility
+        const carousel = document.querySelector('.dest-carousel');
+        if (carousel) {
+            carousel.addEventListener('mouseenter', stopAuto);
+            carousel.addEventListener('mouseleave', startAuto);
+        }
+
+        // Start
+        goTo(0);
+        startAuto();
+    })();
 });
