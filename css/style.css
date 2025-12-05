@@ -571,6 +571,7 @@ p {
     font-size: 1.25rem;
     /* keep text readable without darkening image */
     text-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    color: var(--primary);
 }
 
 .dest-card-overlay p {
@@ -635,7 +636,7 @@ p {
     }
 
     .dest-card img {
-        height: 180px;
+        height: 234px;
     }
 
     @keyframes scrollDestinations {

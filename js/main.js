@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
             routeInfo.classList.remove('hidden');
             routeName.textContent = route.name;
             routeTime.textContent = route.time;
-            routeDistance.textContent = route.distance;
+            routeDistance.textContent = '$' + route.price.toLocaleString('es-CO');
 
             // Update Map View - First complete zoom, then draw line
             const tempPolyline = L.polyline(route.points);
