@@ -678,6 +678,7 @@ p {
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: center;
+    margin-top: 0;
 }
 
 .driver-image {
@@ -967,7 +968,7 @@ p {
     border-radius: 1rem;
     border: 1px solid var(--border);
     box-shadow: var(--shadow-sm);
-    margin-bottom: 1.75rem;
+    margin-bottom: 0.75rem;
 }
 
 .covenas-card h3 {
