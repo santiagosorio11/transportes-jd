@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Taxi Aeropuerto Montería — Traslados a Coveñas | Taxi Seguro Aeropuerto de Montería</title>
+        <title>Taxi Seguro Aeropuerto Montería — Traslados Oficiales desde Aeropuerto de Montería</title>
         <meta name="description" content="Taxi Seguro Aeropuerto de Montería. Traslados oficiales y 100% seguros desde el Aeropuerto de Montería hacia Coveñas, Lorica, Sincelejo y playas del norte. Reserva 24/7, tarifas claras y conductor profesional.">
         <meta name="keywords" content="taxi aeropuerto monteria, taxi aeropuerto montería coveñas, traslado aeropuerto monteria, taxi a coveñas, transporte montería coveñas">
         <link rel="canonical" href="https://transportesjd.example.com/">
@@ -105,7 +105,7 @@
         <div class="container navbar-content">
             <a href="#" class="logo">
                 <i data-lucide="car-front" width="28"></i>
-                <span>TRANSPORTES JD</span>
+                <span>TAXI SEGURO AEROPUERTO MONTERIA</span>
             </a>
 
             <div class="nav-links" id="navLinks">
@@ -124,20 +124,29 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section (rebranded: rotating background images + stickers) -->
     <section id="home" class="hero">
-        <div class="hero-bg"></div>
-        <div class="container hero-content scroll-reveal">
-            <h1>Descubre Colombia <br> <span class="text-highlight">Confort y Seguridad</span></h1>
-            <p>Tu conductor privado experto desde Montería.<br>Viajes personalizados puerta a puerta.
-            </p>
-            <div class="hero-btns">
-                <a href="https://wa.me/573006262199" class="btn btn-primary">
-                    Reservar Ahora <i data-lucide="arrow-right" width="20"></i>
-                </a>
-                <a href="#routes" class="btn btn-outline">Ver Rutas</a>
+        <div class="hero-slides" aria-hidden="true">
+            <div class="hero-slide" style="background-image: url('assets/hero-monteria-1.jpg')"></div>
+            <div class="hero-slide" style="background-image: url('assets/hero-airport-1.jpg')"></div>
+            <div class="hero-slide" style="background-image: url('assets/hero-monteria-2.jpg')"></div>
+        </div>
+
+        <div class="hero-overlay">
+            <div class="container hero-content scroll-reveal">
+                <h1>Taxi Seguro Aeropuerto Monteria<br><span class="text-highlight">Traslados oficiales y 100% seguros</span></h1>
+                <p class="lead">Servicio autorizado desde el Aeropuerto de Montería hacia Coveñas, Lorica, Sincelejo y las playas de Córdoba y Sucre. Conductores verificados, atención 24/7 y tarifas claras.</p>
+
+                <div class="hero-btns">
+                    <a href="https://wa.me/573006262199" class="btn btn-primary">Reservar Ahora <i data-lucide="arrow-right" width="20"></i></a>
+                    <a href="#routes" class="btn btn-outline">Ver Rutas y Tarifas</a>
+                </div>
             </div>
         </div>
+
+        <!-- Fixed circular stamp stickers -->
+        <div class="sticker sticker-top-left" aria-label="Viajes 100% Seguros">VIAJES<br>100%<br>SEGUROS</div>
+        <div class="sticker sticker-bottom-right" aria-label="Transporte Oficial del Aeropuerto de Montería">TRANSPORTE<br>OFICIAL</div>
     </section>
 
     <!-- Driver Section -->
@@ -149,67 +158,63 @@
                 <p>Servicio oficial y 100% seguro desde el Aeropuerto de Montería hacia los siguientes destinos turísticos.</p>
             </div>
 
-            <div class="dest-carousel" aria-label="Carrusel de destinos">
-                <button class="dest-prev" aria-label="Anterior">‹</button>
-                <div class="dest-viewport">
-                    <div class="dest-track">
-                        <div class="dest-slide">
-                            <img src="https://source.unsplash.com/1200x800/?Lorica,Colombia" alt="Lorica">
-                            <div class="dest-caption"><h3>Lorica</h3><p>Traslado desde $140.000</p></div>
-                        </div>
+            <div class="dest-carousel-auto" aria-label="Carrusel automático de destinos">
+                <div class="dest-grid">
+                    <div class="dest-card">
+                        <img src="https://source.unsplash.com/1200x800/?Lorica,Colombia" alt="Lorica">
+                        <div class="dest-card-overlay"><h3>Lorica</h3><p>Traslado desde $140.000</p></div>
+                    </div>
 
-                        <div class="dest-slide">
-                            <img src="https://source.unsplash.com/1200x800/?San Antero,Colombia" alt="San Antero">
-                            <div class="dest-caption"><h3>San Antero</h3><p>Traslado desde $200.000</p></div>
-                        </div>
+                    <div class="dest-card">
+                        <img src="https://source.unsplash.com/1200x800/?San Antero,Colombia" alt="San Antero">
+                        <div class="dest-card-overlay"><h3>San Antero</h3><p>Traslado desde $200.000</p></div>
+                    </div>
 
-                        <div class="dest-slide">
-                            <img src="https://source.unsplash.com/1200x800/?Coveñas,Colombia" alt="Coveñas">
-                            <div class="dest-caption"><h3>Coveñas</h3><p>Diferentes sectores: Primera Ensenada, La Caimanera, Puerto Viejo</p></div>
-                        </div>
+                    <div class="dest-card">
+                        <img src="https://source.unsplash.com/1200x800/?Coveñas,Colombia" alt="Coveñas">
+                        <div class="dest-card-overlay"><h3>Coveñas</h3><p>Primera Ensenada, La Caimanera, Puerto Viejo</p></div>
+                    </div>
 
-                        <div class="dest-slide">
-                            <img src="https://source.unsplash.com/1200x800/?Tolú,Colombia" alt="Santiago de Tolú">
-                            <div class="dest-caption"><h3>Santiago de Tolú</h3><p>Traslado desde $240.000</p></div>
-                        </div>
+                    <div class="dest-card">
+                        <img src="https://source.unsplash.com/1200x800/?Tolú,Colombia" alt="Santiago de Tolú">
+                        <div class="dest-card-overlay"><h3>Santiago de Tolú</h3><p>Traslado desde $240.000</p></div>
+                    </div>
 
-                        <div class="dest-slide">
-                            <img src="https://source.unsplash.com/1200x800/?Playa,Frances,Colombia" alt="Playas del francés">
-                            <div class="dest-caption"><h3>Playas del Francés</h3><p>Sectores: La Guacamaya, Camino Verde</p></div>
-                        </div>
+                    <div class="dest-card">
+                        <img src="https://source.unsplash.com/1200x800/?Playa,Frances,Colombia" alt="Playas del francés">
+                        <div class="dest-card-overlay"><h3>Playas del Francés</h3><p>La Guacamaya, Camino Verde</p></div>
+                    </div>
 
-                        <div class="dest-slide">
-                            <img src="https://source.unsplash.com/1200x800/?Paso Nuevo,Colombia" alt="Paso Nuevo">
-                            <div class="dest-caption"><h3>Paso Nuevo</h3><p>Traslado desde $210.000</p></div>
-                        </div>
+                    <div class="dest-card">
+                        <img src="https://source.unsplash.com/1200x800/?Paso Nuevo,Colombia" alt="Paso Nuevo">
+                        <div class="dest-card-overlay"><h3>Paso Nuevo</h3><p>Traslado desde $210.000</p></div>
+                    </div>
 
-                        <div class="dest-slide">
-                            <img src="https://source.unsplash.com/1200x800/?San Bernardo del Viento,Colombia" alt="San Bernardo del Viento">
-                            <div class="dest-caption"><h3>San Bernardo del Viento</h3><p>Traslado desde $210.000</p></div>
-                        </div>
+                    <div class="dest-card">
+                        <img src="https://source.unsplash.com/1200x800/?San Bernardo del Viento,Colombia" alt="San Bernardo del Viento">
+                        <div class="dest-card-overlay"><h3>San Bernardo del Viento</h3><p>Traslado desde $210.000</p></div>
+                    </div>
 
-                        <div class="dest-slide">
-                            <img src="https://source.unsplash.com/1200x800/?Arboletes,Colombia" alt="Arboletes">
-                            <div class="dest-caption"><h3>Arboletes</h3><p>Traslado desde $220.000</p></div>
-                        </div>
+                    <div class="dest-card">
+                        <img src="https://source.unsplash.com/1200x800/?Arboletes,Colombia" alt="Arboletes">
+                        <div class="dest-card-overlay"><h3>Arboletes</h3><p>Traslado desde $220.000</p></div>
+                    </div>
 
-                        <div class="dest-slide">
-                            <img src="https://source.unsplash.com/1200x800/?Moñitos,Colombia" alt="Moñitos">
-                            <div class="dest-caption"><h3>Moñitos</h3><p>Traslado desde $220.000</p></div>
-                        </div>
+                    <div class="dest-card">
+                        <img src="https://source.unsplash.com/1200x800/?Moñitos,Colombia" alt="Moñitos">
+                        <div class="dest-card-overlay"><h3>Moñitos</h3><p>Traslado desde $220.000</p></div>
+                    </div>
 
-                        <div class="dest-slide">
-                            <img src="https://source.unsplash.com/1200x800/?Sincelejo,Colombia" alt="Sincelejo">
-                            <div class="dest-caption"><h3>Sincelejo</h3><p>Traslado desde $220.000</p></div>
-                        </div>
+                    <div class="dest-card">
+                        <img src="https://source.unsplash.com/1200x800/?Sincelejo,Colombia" alt="Sincelejo">
+                        <div class="dest-card-overlay"><h3>Sincelejo</h3><p>Traslado desde $220.000</p></div>
+                    </div>
 
-                        <div class="dest-slide">
-                            <img src="https://source.unsplash.com/1200x800/?Necoclí,Colombia" alt="Necoclí">
-                            <div class="dest-caption"><h3>Necoclí</h3><p>Traslado desde $450.000</p></div>
-                        </div>
+                    <div class="dest-card">
+                        <img src="https://source.unsplash.com/1200x800/?Necoclí,Colombia" alt="Necoclí">
+                        <div class="dest-card-overlay"><h3>Necoclí</h3><p>Traslado desde $450.000</p></div>
                     </div>
                 </div>
-                <button class="dest-next" aria-label="Siguiente">›</button>
             </div>
         </div>
     </section>
@@ -483,8 +488,8 @@
     <footer id="contact">
         <div class="container footer-content">
             <div class="footer-col">
-                <h3>Transportes JD</h3>
-                <p>Tu aliado de confianza para recorrer desde Montería. Seguridad, puntualidad y confort en cada kilómetro.
+                <h3>Taxi Seguro Aeropuerto Monteria</h3>
+                <p>Servicio oficial desde el Aeropuerto de Montería. Seguridad, puntualidad y confort en cada kilómetro.
                 </p>
             </div>
             <div class="footer-col">

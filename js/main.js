@@ -393,7 +393,9 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
-    // 7. Destinations Carousel (automatic every 5 seconds)
+    // 7. Destinations Carousel (automatic every 5 seconds) - REMOVED (replaced by auto-scroll grid)
+    // Keeping old destinations carousel JS commented out for reference
+    /* 
     (function initDestinationsCarousel() {
         const track = document.querySelector('.dest-track');
         if (!track) return;
@@ -437,5 +439,36 @@ document.addEventListener('DOMContentLoaded', () => {
         // Start
         goTo(0);
         startAuto();
+    })();
+    */
+
+    // 8. Hero slideshow for Taxi Seguro Aeropuerto Monteria (5s cycle)
+    (function initHeroSlideshow() {
+        const slides = Array.from(document.querySelectorAll('.hero-slide'));
+        if (!slides.length) return;
+        let idx = 0;
+        const interval = 5000; // 5 seconds
+
+        function show(i) {
+            slides.forEach((s, k) => s.classList.toggle('active', k === i));
+        }
+
+        function next() { idx = (idx + 1) % slides.length; show(idx); }
+
+        // Start
+        show(0);
+        setInterval(next, interval);
+    })();
+
+    // 9. Destinations auto-scroll grid carousel (infinite scroll effect)
+    (function initDestCarousel() {
+        const grid = document.querySelector('.dest-grid');
+        if (!grid) return;
+        
+        // Clone slides for infinite effect
+        const cards = Array.from(grid.children);
+        cards.forEach(card => {
+            grid.appendChild(card.cloneNode(true));
+        });
     })();
 });
