@@ -460,15 +460,23 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(next, interval);
     })();
 
-    // 9. Destinations auto-scroll grid carousel (infinite scroll effect)
+    // 9. Destinations auto-scroll carousel (infinite loop with cloning)
     (function initDestCarousel() {
         const grid = document.querySelector('.dest-grid');
         if (!grid) return;
         
-        // Clone slides for infinite effect
+        // Clone all cards for infinite effect
         const cards = Array.from(grid.children);
         cards.forEach(card => {
             grid.appendChild(card.cloneNode(true));
+        });
+
+        // When animation completes one cycle, reset position
+        const cardWidth = cards[0].offsetWidth + 24; // width + gap
+        const totalWidth = cards.length * cardWidth;
+
+        grid.addEventListener('animationiteration', () => {
+            // Animation will repeat smoothly due to CSS keyframes
         });
     })();
 });
