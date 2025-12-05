@@ -1,79 +1,172 @@
-// Routes Data - From Montería
-const routes = [
+// Build routes from provided JSON (real coordinates & times)
+const rawData = [
     {
-        id: 1,
-        name: "Montería - Cartagena",
-        time: "2.5 horas",
-        distance: "180 km",
-        center: [9.5700, -75.6800], // Between Montería and Cartagena
-        zoom: 8,
-        points: [
-            [8.7500, -75.8814], // Montería
-            [10.3910, -75.4794]  // Cartagena
-        ]
+        "type": "origin",
+        "name": "Aeropuerto Los Garzones",
+        "price": 0,
+        "time": "N/A",
+        "origin": "Punto de Partida",
+        "coords": [8.8256, -75.8273],
+        "description": "Aeropuerto Internacional Los Garzones"
     },
     {
-        id: 2,
-        name: "Montería - Barranquilla",
-        time: "2 horas",
-        distance: "140 km",
-        center: [9.5700, -75.3300], // Between Montería and Barranquilla
-        zoom: 8,
-        points: [
-            [8.7500, -75.8814], // Montería
-            [10.9685, -74.7813]  // Barranquilla
-        ]
+        "type": "origin",
+        "name": "Montería (Centro)",
+        "price": 0,
+        "time": "N/A",
+        "origin": "Punto de Partida",
+        "coords": [8.7510, -75.8785],
+        "description": "Centro de la ciudad"
     },
     {
-        id: 3,
-        name: "Montería - Sincelejo",
-        time: "1 hora",
-        distance: "85 km",
-        center: [9.2500, -75.4300], // Between Montería and Sincelejo
-        zoom: 9,
-        points: [
-            [8.7500, -75.8814], // Montería
-            [9.3000, -75.4000]  // Sincelejo
-        ]
+        "type": "destination",
+        "name": "Santa Cruz de Lorica",
+        "price": 140000,
+        "time": "50 min - 1 h",
+        "origin": "Aeropuerto Los Garzones",
+        "coords": [9.2394, -75.8139],
+        "description": "Pueblo patrimonio"
     },
     {
-        id: 4,
-        name: "Montería - Medellín",
-        time: "6 - 7 horas",
-        distance: "400 km",
-        center: [7.5000, -75.7000], // Between Montería and Medellín
-        zoom: 7,
-        points: [
-            [8.7500, -75.8814], // Montería
-            [6.2476, -75.5658]  // Medellín
-        ]
+        "type": "destination",
+        "name": "San Antero",
+        "price": 200000,
+        "time": "1 h 15 min",
+        "origin": "Aeropuerto Los Garzones",
+        "coords": [9.3736, -75.7594],
+        "description": "Destino turístico"
     },
     {
-        id: 5,
-        name: "Montería - Lorica",
-        time: "45 min",
-        distance: "35 km",
-        center: [9.0500, -75.8300], // Between Montería and Lorica
-        zoom: 10,
-        points: [
-            [8.7500, -75.8814], // Montería
-            [9.2333, -75.8167]  // Lorica
-        ]
-    }
-    ,
+        "type": "destination",
+        "name": "Coveñas (Centro)",
+        "price": 200000,
+        "time": "1 h 30 min",
+        "origin": "Aeropuerto Los Garzones",
+        "coords": [9.4042, -75.6826],
+        "description": "Playas principales"
+    },
     {
-        id: 6,
-        name: "Montería - Coveñas",
-        time: "2 horas",
-        distance: "~150 km",
-        center: [9.0000, -75.8600], // approximate center between Montería and Coveñas
-        zoom: 9,
-        points: [
-            [8.7500, -75.8814], // Montería (reference)
-            [9.1250, -75.6600]  // Coveñas (approx coordinates)
-        ]
+        "type": "destination",
+        "name": "Coveñas - La Caimanera",
+        "price": 220000,
+        "time": "1 h 35 min",
+        "origin": "Aeropuerto Los Garzones",
+        "coords": [9.4265, -75.6610],
+        "description": "Primera Ensenada"
+    },
+    {
+        "type": "destination",
+        "name": "Coveñas - Puerto Viejo",
+        "price": 220000,
+        "time": "1 h 40 min",
+        "origin": "Aeropuerto Los Garzones",
+        "coords": [9.4450, -75.6420],
+        "description": "Sector turístico"
+    },
+    {
+        "type": "destination",
+        "name": "Santiago de Tolú",
+        "price": 240000,
+        "time": "1 h 50 min",
+        "origin": "Aeropuerto Los Garzones",
+        "coords": [9.5245, -75.5823],
+        "description": "Playas y malecón"
+    },
+    {
+        "type": "destination",
+        "name": "Playas del Francés",
+        "price": 320000,
+        "time": "2 h 10 min",
+        "origin": "Aeropuerto Los Garzones",
+        "coords": [9.5605, -75.5502],
+        "description": "Sector La Guacamaya / Camino Verde"
+    },
+    {
+        "type": "destination",
+        "name": "Paso Nuevo",
+        "price": 210000,
+        "time": "2 h",
+        "origin": "Montería (Ciudad)",
+        "coords": [9.3280, -75.9550],
+        "description": "Playas tranquilas"
+    },
+    {
+        "type": "destination",
+        "name": "San Bernardo del Viento",
+        "price": 210000,
+        "time": "1 h 50 min",
+        "origin": "Montería (Ciudad)",
+        "coords": [9.3533, -75.9536],
+        "description": "Desembocadura del río Sinú"
+    },
+    {
+        "type": "destination",
+        "name": "Arboletes",
+        "price": 220000,
+        "time": "1 h 20 min",
+        "origin": "Montería (Ciudad)",
+        "coords": [8.8505, -76.4286],
+        "description": "Volcán de lodo y playa"
+    },
+    {
+        "type": "destination",
+        "name": "Moñitos",
+        "price": 220000,
+        "time": "1 h 40 min",
+        "origin": "Montería (Ciudad)",
+        "coords": [9.2458, -76.1283],
+        "description": "Playa y gastronomía"
+    },
+    {
+        "type": "destination",
+        "name": "Sincelejo",
+        "price": 220000,
+        "time": "1 h 50 min",
+        "origin": "Montería (Ciudad)",
+        "coords": [9.3047, -75.3978],
+        "description": "Capital de Sucre"
+    },
+    {
+        "type": "destination",
+        "name": "Necoclí",
+        "price": 450000,
+        "time": "2 h 45 min",
+        "origin": "Montería (Ciudad)",
+        "coords": [8.4256, -76.7867],
+        "description": "Golfo de Urabá"
     }
 ];
+
+// Normalize origin: treat any 'Aeropuerto' or 'Montería' as a single origin named 'Montería'
+const MONTERIA_ORIGIN_NAME = 'Montería';
+const MONTERIA_COORDS = [8.7510, -75.8785];
+
+// Build routes array: one route per destination (use MONTERIA as origin for all)
+// Keep a single Coveñas entry (ignore sectorized Coveñas items)
+const seenDestBase = new Set();
+const routes = rawData
+    .filter(item => item.type === 'destination')
+    .reduce((acc, item) => {
+    // Determine base name for dedup (collapse Coveñas sectors)
+    let baseName = item.name.toLowerCase();
+    if (baseName.includes('coveñ')) baseName = 'coveñas';
+    if (seenDestBase.has(baseName)) return acc; // skip duplicates
+    seenDestBase.add(baseName);
+
+    const originCoords = MONTERIA_COORDS;
+    acc.push({
+        id: acc.length + 1,
+        name: `${MONTERIA_ORIGIN_NAME} - ${item.name.replace(/\s*\(.+\)$/,'')}`,
+        time: item.time || '',
+        distance: `$${item.price?.toString() || ''}`,
+        center: [ (originCoords[0] + item.coords[0]) / 2, (originCoords[1] + item.coords[1]) / 2 ],
+        zoom: 9,
+        points: [ originCoords, item.coords ],
+        description: item.description || ''
+    });
+
+    return acc;
+    }, []);
 
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Initialize Map
@@ -88,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
         keyboard: false,
         tap: false,
         zoomControl: false
-    }).setView([8.7500, -75.8814], 9);
+    }).setView([8.7510, -75.8785], 9);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -102,41 +195,13 @@ document.addEventListener('DOMContentLoaded', () => {
         iconAnchor: [12, 41],
         popupAnchor: [1, -34]
     });
-
     let currentPolyline = null;
     let currentMarkers = [];
     let animatedSegments = [];
     const drawSpeed = 150; // ms per segment during animated drawing
 
-    // Draw the star route (Montería - Coveñas) on initial load
-    (function drawStarRoute() {
-        const star = routes.find(r => /coveñ|covenas/i.test(r.name));
-        if (!star) return;
-
-        // Add dashed polyline for base map
-        currentPolyline = L.polyline(star.points, {
-            color: '#1e40af',
-            weight: 5,
-            opacity: 0.85,
-            dashArray: '15, 10',
-            lineCap: 'round',
-            lineJoin: 'round'
-        }).addTo(map);
-
-        // Fit to bounds so the route is visible on base map
-        const bounds = currentPolyline.getBounds();
-        if (bounds.isValid()) {
-            map.fitBounds(bounds, { padding: [40, 40], maxZoom: star.zoom });
-        }
-
-        // Add start/end markers
-        const startMarker = L.marker(star.points[0], { icon: carIcon }).addTo(map)
-            .bindPopup(`<b>Inicio:</b> ${star.name.split(' - ')[0]}`);
-        const endMarker = L.marker(star.points[star.points.length - 1], { icon: carIcon }).addTo(map)
-            .bindPopup(`<b>Destino:</b> ${star.name.split(' - ')[1] || 'Fin'}`);
-
-        currentMarkers.push(startMarker, endMarker);
-    })();
+    // Layer group to manage all route layers (polyline segments + markers)
+    const routeLayer = L.layerGroup().addTo(map);
 
     // 2. Populate Dropdown
     const select = document.getElementById('routeSelect');
@@ -163,21 +228,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const routeId = parseInt(e.target.value);
         const route = routes.find(r => r.id === routeId);
 
-        // Clear previous map elements
-        if (currentPolyline && map.hasLayer(currentPolyline)) {
-            map.removeLayer(currentPolyline);
-            currentPolyline = null;
-        }
-        currentMarkers.forEach(marker => {
-            if (map.hasLayer(marker)) {
-                map.removeLayer(marker);
-            }
-        });
-        animatedSegments.forEach(seg => {
-            if (map.hasLayer(seg)) {
-                map.removeLayer(seg);
-            }
-        });
+        // Clear previous map elements in a single operation (fixes lingering lines)
+        routeLayer.clearLayers();
+        currentPolyline = null;
         currentMarkers = [];
         animatedSegments = [];
 
@@ -206,54 +259,54 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Small delay to ensure map is completely settled
                 setTimeout(() => {
                     // Start drawing animated route after zoom is complete
-                    let segmentIndex = 0;
+                        let segmentIndex = 0;
 
-                    function animateRouteSegment() {
-                        if (segmentIndex < route.points.length - 1) {
-                            const startPoint = route.points[segmentIndex];
-                            const endPoint = route.points[segmentIndex + 1];
-                            
-                            // Create segment polyline with dashed style
-                            const segment = L.polyline([startPoint, endPoint], {
-                                color: '#1e40af',
-                                weight: 5,
-                                opacity: 0.8,
-                                lineCap: 'round',
-                                lineJoin: 'round',
-                                dashArray: '15, 10'
-                            }).addTo(map);
-                            
-                            animatedSegments.push(segment);
-                            segmentIndex++;
-                            
-                            // Continue animation
-                            setTimeout(animateRouteSegment, 150);
-                        } else {
-                            // All segments drawn, create final complete dashed polyline
-                            setTimeout(() => {
-                                // Remove individual segments
-                                animatedSegments.forEach(seg => {
-                                    if (map.hasLayer(seg)) {
-                                        map.removeLayer(seg);
-                                    }
-                                });
-                                animatedSegments = [];
-                                
-                                // Add final complete dashed polyline
-                                currentPolyline = L.polyline(route.points, {
+                        function animateRouteSegment() {
+                            if (segmentIndex < route.points.length - 1) {
+                                const startPoint = route.points[segmentIndex];
+                                const endPoint = route.points[segmentIndex + 1];
+
+                                // Create segment polyline with dashed style and add to routeLayer
+                                const segment = L.polyline([startPoint, endPoint], {
                                     color: '#1e40af',
                                     weight: 5,
                                     opacity: 0.8,
                                     lineCap: 'round',
                                     lineJoin: 'round',
                                     dashArray: '15, 10'
-                                }).addTo(map);
-                            }, 250);
-                        }
-                    }
+                                }).addTo(routeLayer);
 
-                    // Start route animation
-                    animateRouteSegment();
+                                animatedSegments.push(segment);
+                                segmentIndex++;
+
+                                // Continue animation
+                                setTimeout(animateRouteSegment, drawSpeed);
+                            } else {
+                                // All segments drawn, create final complete dashed polyline
+                                setTimeout(() => {
+                                    // Remove individual segments (they're in routeLayer; clear them)
+                                    animatedSegments.forEach(seg => {
+                                        if (routeLayer.hasLayer(seg)) {
+                                            routeLayer.removeLayer(seg);
+                                        }
+                                    });
+                                    animatedSegments = [];
+
+                                    // Add final complete dashed polyline to routeLayer
+                                    currentPolyline = L.polyline(route.points, {
+                                        color: '#1e40af',
+                                        weight: 5,
+                                        opacity: 0.8,
+                                        lineCap: 'round',
+                                        lineJoin: 'round',
+                                        dashArray: '15, 10'
+                                    }).addTo(routeLayer);
+                                }, 250);
+                            }
+                        }
+
+                        // Start route animation
+                        animateRouteSegment();
                 }, 400);
             };
             
@@ -261,10 +314,10 @@ document.addEventListener('DOMContentLoaded', () => {
             map.once('moveend', drawRouteAfterZoom);
 
             // Add Markers (Start and End)
-            const startMarker = L.marker(route.points[0], { icon: carIcon }).addTo(map)
+            const startMarker = L.marker(route.points[0], { icon: carIcon }).addTo(routeLayer)
                 .bindPopup(`<b>Inicio:</b> ${route.name.split(' - ')[0]}`);
 
-            const endMarker = L.marker(route.points[route.points.length - 1], { icon: carIcon }).addTo(map)
+            const endMarker = L.marker(route.points[route.points.length - 1], { icon: carIcon }).addTo(routeLayer)
                 .bindPopup(`<b>Destino:</b> ${route.name.split(' - ')[1] || 'Fin'}`);
 
             currentMarkers.push(startMarker, endMarker);
@@ -272,14 +325,14 @@ document.addEventListener('DOMContentLoaded', () => {
             // Add waypoint markers if there are more than 2 points
             if (route.points.length > 2) {
                 for (let i = 1; i < route.points.length - 1; i++) {
-                    const waypointMarker = L.marker(route.points[i], { icon: carIcon }).addTo(map)
+                    const waypointMarker = L.marker(route.points[i], { icon: carIcon }).addTo(routeLayer)
                         .bindPopup(`<b>Punto Intermedio ${i}</b>`);
                     currentMarkers.push(waypointMarker);
                 }
             }
 
             // Open popup of end marker after animation completes
-            setTimeout(() => endMarker.openPopup(), (route.points.length * drawSpeed) + 1000);
+            setTimeout(() => endMarker.openPopup(), (route.points.length * drawSpeed) + 800);
 
         } else {
             routeInfo.classList.add('hidden');
@@ -373,6 +426,40 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Side-dots scrollspy and smooth navigation
+    (function initSideDots() {
+        const dots = Array.from(document.querySelectorAll('.side-dots .dot'));
+        if (!dots.length) return;
+
+        // Click behavior - smooth scroll to target
+        dots.forEach(a => {
+            a.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('data-target');
+                const el = document.getElementById(targetId);
+                if (!el) return;
+                const headerOffset = 80;
+                const rect = el.getBoundingClientRect();
+                const top = rect.top + window.pageYOffset - headerOffset;
+                window.scrollTo({ top, behavior: 'smooth' });
+            });
+        });
+
+        // IntersectionObserver to update active dot
+        const sections = dots.map(d => document.getElementById(d.getAttribute('data-target'))).filter(Boolean);
+        const obsOptions = { root: null, rootMargin: '0px', threshold: 0.55 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    document.querySelectorAll('.side-dots .dot').forEach(el => el.classList.toggle('active', el.getAttribute('data-target') === id));
+                }
+            });
+        }, obsOptions);
+
+        sections.forEach(s => observer.observe(s));
+    })();
+
     // 6. Scroll Reveal Animation
     const observerOptions = {
         threshold: 0.1,
@@ -446,7 +533,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const slides = Array.from(document.querySelectorAll('.hero-slide'));
         if (!slides.length) return;
         let idx = 0;
-        const interval = 5000; // 5 seconds
+        const interval = 7000; // 7 seconds (2s added)
 
         function show(i) {
             slides.forEach((s, k) => s.classList.toggle('active', k === i));
@@ -459,23 +546,80 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(next, interval);
     })();
 
-    // 9. Destinations auto-scroll carousel (infinite loop with cloning)
+    // 9. Destinations auto-scroll carousel (infinite loop with cloning + draggable)
     (function initDestCarousel() {
+        const container = document.querySelector('.dest-carousel-auto');
         const grid = document.querySelector('.dest-grid');
-        if (!grid) return;
-        
+        if (!grid || !container) return;
+
         // Clone all cards for infinite effect
         const cards = Array.from(grid.children);
-        cards.forEach(card => {
-            grid.appendChild(card.cloneNode(true));
-        });
+        cards.forEach(card => grid.appendChild(card.cloneNode(true)));
 
-        // When animation completes one cycle, reset position
-        const cardWidth = cards[0].offsetWidth + 24; // width + gap
-        const totalWidth = cards.length * cardWidth;
+        // Prepare animation state
+        let rafId = null;
+        let pos = 0;
+        // pixels per frame approx (increase to move faster)
+        const speed = 0.8; // adjust to taste (higher = faster)
+        let isDragging = false;
+        let startX = 0;
+        let startPos = 0;
 
-        grid.addEventListener('animationiteration', () => {
-            // Animation will repeat smoothly due to CSS keyframes
-        });
+        // Ensure transform will be used
+        grid.style.willChange = 'transform';
+        grid.style.display = 'flex';
+
+        const totalWidth = grid.scrollWidth / 2; // because we cloned
+
+        function step() {
+            if (!isDragging) {
+                pos += speed;
+            }
+            if (pos >= totalWidth) pos -= totalWidth;
+            grid.style.transform = `translateX(-${pos}px)`;
+            rafId = requestAnimationFrame(step);
+        }
+
+        // Start animation
+        rafId = requestAnimationFrame(step);
+
+        // Pointer (mouse/touch) drag handlers
+        container.style.cursor = 'grab';
+
+        function pointerDown(e) {
+            isDragging = true;
+            container.style.cursor = 'grabbing';
+            startX = e.clientX || (e.touches && e.touches[0].clientX) || 0;
+            startPos = pos;
+            // stop the automatic increment during drag
+        }
+
+        function pointerMove(e) {
+            if (!isDragging) return;
+            const x = e.clientX || (e.touches && e.touches[0].clientX) || 0;
+            const dx = x - startX;
+            pos = startPos - dx;
+            // wrap
+            if (pos < 0) pos += totalWidth;
+            if (pos >= totalWidth) pos -= totalWidth;
+            grid.style.transform = `translateX(-${pos}px)`;
+        }
+
+        function pointerUp() {
+            isDragging = false;
+            container.style.cursor = 'grab';
+        }
+
+        // Mouse events: only start drag on left-button mousedown
+        container.addEventListener('mousedown', (e) => { if (e.button !== 0) return; e.preventDefault(); pointerDown(e); });
+        window.addEventListener('mousemove', pointerMove);
+        window.addEventListener('mouseup', pointerUp);
+
+        // Touch events
+        container.addEventListener('touchstart', (e) => { pointerDown(e.touches[0]); }, { passive: true });
+        container.addEventListener('touchmove', (e) => { pointerMove(e.touches[0]); }, { passive: true });
+        container.addEventListener('touchend', pointerUp);
+
+        // Note: do not activate drag on hover. Drag starts on mousedown and ends on mouseup.
     })();
 });

@@ -404,11 +404,13 @@ p {
     background-size: cover;
     background-position: center;
     opacity: 0;
-    transition: opacity 1s ease-in-out;
+    transform: scale(1);
+    transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .hero-slide.active {
     opacity: 1;
+    transform: scale(1.02);
 }
 
 /* Dark overlay for readability */
@@ -525,7 +527,7 @@ p {
 .dest-grid {
     display: flex;
     gap: 1.5rem;
-    animation: scrollDestinations 60s linear infinite;
+    /* animation removed - using JS-driven auto-scroll for better control and drag support */
     will-change: transform;
 }
 
@@ -554,7 +556,8 @@ p {
 .dest-card-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+    /* do not darken or change photo colors - keep overlay transparent */
+    background: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,0));
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -566,18 +569,48 @@ p {
 .dest-card-overlay h3 {
     margin: 0 0 0.5rem 0;
     font-size: 1.25rem;
+    /* keep text readable without darkening image */
+    text-shadow: 0 6px 18px rgba(0,0,0,0.6);
 }
 
 .dest-card-overlay p {
     margin: 0;
     font-size: 0.9rem;
-    color: rgba(255,255,255,0.9);
+    color: rgba(255,255,255,0.95);
+    text-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+/* Small notch bottom-left for duration/time */
+.dest-time {
+    position: absolute;
+    right: 0.9rem;
+    bottom: 0.9rem;
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    padding: 0.35rem 0.6rem;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
 }
 
 @keyframes scrollDestinations {
     0% { transform: translateX(0); }
     100% { transform: translateX(-33.333%); }
 }
+
+/* Make carousel container draggable cursor */
+.dest-carousel-auto {
+    overflow: hidden;
+}
+
+.dest-carousel-auto .dest-grid {
+    transition: transform 0.05s linear;
+}
+
+.dest-carousel-auto { cursor: grab; }
+.dest-carousel-auto:active { cursor: grabbing; }
 
 @media (max-width: 992px) {
     .dest-card {
@@ -923,6 +956,41 @@ p {
     margin-bottom: 3rem;
 }
 
+/* Coveñas card (improved CTA layout) */
+.covenas-card {
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    gap: 1.5rem;
+    align-items: center;
+    padding: 1.5rem;
+    background: linear-gradient(180deg, var(--secondary) 0%, var(--white) 100%);
+    border-radius: 1rem;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 1.75rem;
+}
+
+.covenas-card h3 {
+    margin: 0 0 0.5rem 0;
+    color: var(--primary);
+}
+
+.covenas-left p { color: var(--text-light); margin-bottom: 0.5rem; }
+.covenas-list { margin: 0.5rem 0 0.75rem 0; color: var(--text); }
+.covenas-note { font-size: 0.9rem; color: var(--text-light); margin-top: 0.5rem; }
+
+.covenas-cta { display: flex; flex-direction: column; gap: 0.6rem; align-items: stretch; justify-content: center; }
+.btn-covenas-whatsapp { padding: 0.85rem 1rem; font-weight: 700; }
+.btn-covenas-form { padding: 0.6rem 0.9rem; }
+.covenas-price { display: block; text-align: center; color: var(--text); margin-top: 0.25rem; font-weight: 700; }
+
+/* Smaller screens: stack the Coveñas card */
+@media (max-width: 992px) {
+    .covenas-card { grid-template-columns: 1fr; padding: 1rem; }
+    .covenas-cta { flex-direction: row; gap: 0.75rem; }
+    .covenas-price { margin-top: 0; }
+}
+
 .map-controls {
     padding: 2rem;
     background: linear-gradient(180deg, var(--secondary) 0%, var(--white) 100%);
@@ -1183,6 +1251,33 @@ footer {
     transition: all 0.3s;
     animation: pulse-green 2.5s infinite;
 }
+
+/* Side dot navigation */
+.side-dots {
+    position: fixed;
+    right: 6px; /* almost at the edge */
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1200;
+    display: flex;
+    align-items: center;
+}
+
+.side-dots ul { margin: 0; padding: 0; }
+.side-dots li { list-style: none; margin: 8px 0; }
+.side-dots .dot { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.side-dots .dot-circle { width: 14px; height: 14px; border-radius: 50%; background: rgba(15,23,42,0.12); display: inline-block; border: 2px solid rgba(255,255,255,0.05); box-shadow: 0 4px 10px rgba(2,6,23,0.08); transition: background 0.2s ease, transform 0.15s ease; }
+.side-dots .dot-label { background: rgba(15,23,42,0.9); color: #fff; padding: 6px 10px; border-radius: 6px; font-size: 0.875rem; white-space: nowrap; opacity: 0; transform: translateX(-6px); transition: opacity 0.18s ease, transform 0.18s ease; pointer-events: none; margin-right: 6px; }
+.side-dots .dot:hover .dot-label { opacity: 1; transform: translateX(0); }
+.side-dots .dot.active .dot-circle { background: linear-gradient(135deg,var(--primary),var(--primary-light)); transform: scale(1.08); box-shadow: 0 6px 18px rgba(30,64,175,0.18); }
+
+@media (max-width: 992px) {
+    .side-dots { display: none; }
+}
+
+/* Spacing between carousel and Coveñas card */
+.dest-carousel-auto { margin-bottom: 2rem; }
+.covenas-card { margin-top: 1.5rem; }
 
 .whatsapp-float svg {
     width: 100%;
