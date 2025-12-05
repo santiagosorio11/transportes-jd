@@ -87,7 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
         boxZoom: false,
         keyboard: false,
         tap: false,
-        // keep zoom control visible if desired; user cannot interact with it
         zoomControl: false
     }).setView([8.7500, -75.8814], 9);
 
