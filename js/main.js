@@ -426,39 +426,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Side-dots scrollspy and smooth navigation
-    (function initSideDots() {
-        const dots = Array.from(document.querySelectorAll('.side-dots .dot'));
-        if (!dots.length) return;
-
-        // Click behavior - smooth scroll to target
-        dots.forEach(a => {
-            a.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('data-target');
-                const el = document.getElementById(targetId);
-                if (!el) return;
-                const headerOffset = 80;
-                const rect = el.getBoundingClientRect();
-                const top = rect.top + window.pageYOffset - headerOffset;
-                window.scrollTo({ top, behavior: 'smooth' });
-            });
-        });
-
-        // IntersectionObserver to update active dot
-        const sections = dots.map(d => document.getElementById(d.getAttribute('data-target'))).filter(Boolean);
-        const obsOptions = { root: null, rootMargin: '0px', threshold: 0.55 };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const id = entry.target.id;
-                    document.querySelectorAll('.side-dots .dot').forEach(el => el.classList.toggle('active', el.getAttribute('data-target') === id));
-                }
-            });
-        }, obsOptions);
-
-        sections.forEach(s => observer.observe(s));
-    })();
+    // side-dots removed
 
     // 6. Scroll Reveal Animation
     const observerOptions = {
