@@ -1,10 +1,13 @@
 /* TRANSPORTES JD - Complete Styles */
 
 :root {
-    --primary: #1e40af;
-    --primary-dark: #1e3a8a;
-    --primary-light: #3b82f6;
-    --secondary: #f0f9ff;
+    --primary: #FDD835;
+    --primary-dark: #F9A825;
+    --primary-light: #FFE082;
+    --secondary: #fffef0;
+    --secondary-blue: #1e40af;
+    --secondary-blue-dark: #1e3a8a;
+    --secondary-blue-light: #3b82f6;
     --accent: #f59e0b;
     --accent-dark: #d97706;
     --text: #0f172a;
@@ -15,9 +18,9 @@
     --success: #10b981;
 
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-    --shadow: 0 4px 20px rgba(30, 64, 175, 0.08);
-    --shadow-lg: 0 10px 40px rgba(30, 64, 175, 0.12);
-    --shadow-xl: 0 20px 60px rgba(30, 64, 175, 0.15);
+    --shadow: 0 4px 20px rgba(253, 216, 53, 0.08);
+    --shadow-lg: 0 10px 40px rgba(253, 216, 53, 0.12);
+    --shadow-xl: 0 20px 60px rgba(253, 216, 53, 0.15);
 
     --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-display: 'Poppins', var(--font-main);
@@ -112,7 +115,7 @@ p {
 
 .btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(30, 64, 175, 0.25);
+    box-shadow: 0 8px 20px rgba(253, 216, 53, 0.25);
 }
 
 .btn-primary {
@@ -121,7 +124,7 @@ p {
 }
 
 .btn-outline {
-    background-color: transparent;
+    background-color: rgba(253, 216, 53, 0.15);
     border: 2px solid var(--primary);
     color: var(--primary);
 }
@@ -132,7 +135,7 @@ p {
 }
 
 .btn-nav {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    background: linear-gradient(135deg, var(--secondary-blue) 0%, var(--secondary-blue-light) 100%);
     color: var(--white);
     padding: 0.625rem 1.5rem;
     border-radius: 50px;
@@ -141,7 +144,7 @@ p {
 
 /* TOP BAR */
 .top-bar {
-    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+    background: linear-gradient(135deg, var(--secondary-blue-dark) 0%, var(--secondary-blue) 100%);
     color: var(--white);
     padding: 0.75rem 0;
     font-size: clamp(0.8rem, 1.5vw, 0.9rem);
@@ -571,7 +574,7 @@ p {
     font-size: 1.25rem;
     /* keep text readable without darkening image */
     text-shadow: 0 6px 18px rgba(0,0,0,0.6);
-    color: var(--primary);
+    color: var(--white);
 }
 
 .dest-card-overlay p {
@@ -647,12 +650,12 @@ p {
 
 /* SECTIONS */
 .section {
-    padding: 5rem 0;
+    padding: 3rem 0; /* reduced global vertical spacing between sections */
 }
 
 .section-header {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 2.5rem; /* tightened header spacing */
 }
 
 .section-header h2 {
@@ -726,6 +729,11 @@ p {
     font-size: 0.875rem;
     letter-spacing: 2px;
     margin-bottom: 1rem;
+}
+
+/* Ensure driver info h2 fits in one line */
+.driver-info h2 {
+    font-size: clamp(2rem, 4vw, 2.5rem);
 }
 
 /* Ensure driver info column stacks and action buttons are centered */
@@ -813,7 +821,7 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    background: linear-gradient(135deg, var(--secondary-blue) 0%, var(--secondary-blue-light) 100%);
     opacity: 0;
     transition: opacity 0.4s;
     z-index: 0;
@@ -830,7 +838,7 @@ p {
 
 .service-card:hover .icon-box {
     background: var(--white);
-    color: var(--primary);
+    color: var(--secondary-blue);
     transform: scale(1.1) rotate(5deg);
 }
 
@@ -842,7 +850,7 @@ p {
 .icon-box {
     width: 70px;
     height: 70px;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    background: linear-gradient(135deg, var(--secondary-blue) 0%, var(--secondary-blue-light) 100%);
     border-radius: 1rem;
     display: flex;
     align-items: center;
@@ -871,12 +879,130 @@ p {
     font-size: clamp(0.9375rem, 1.5vw + 0.25rem, 1rem);
 }
 
+/* Mobile: make icon and title align horizontally to reduce empty space */
+@media (max-width: 768px) {
+    .service-card {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1.25rem;
+    }
+
+    .service-card .icon-box {
+        margin-bottom: 0;
+        width: 56px;
+        height: 56px;
+    }
+
+    .service-card h3 {
+        margin-bottom: 0;
+        font-size: 1.05rem;
+    }
+
+    .service-card p {
+        margin-top: 0.5rem;
+        font-size: 0.95rem;
+        flex-basis: 100%; /* force paragraph to a new line so title sits next to icon */
+    }
+}
+
 /* VEHICLE */
 .vehicle-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: center;
+}
+
+/* Vehicle car deck / baraja styles */
+.vehicle-column { display: flex; flex-direction: column; gap: 1rem; }
+.vehicle-carousel { margin-top: 1rem; }
+.card-deck {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    perspective: 1200px;
+}
+/* Taxi format: 1:1 (square) */
+.vehicle-taxi .card-deck {
+    height: 420px;
+}
+
+.vehicle-van .card-deck {
+    height: 420px; /* 3:4 ratio with 420px width gives ~560px height */
+}
+.card-deck .card {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    /* show complete image without cropping or borders */
+    object-fit: cover;
+    object-position: center;
+    border-radius: 1rem;
+    transform-origin: 50% 50%;
+    transition: transform 700ms cubic-bezier(0.2,0.9,0.2,1), opacity 500ms ease;
+    cursor: pointer;
+    background: transparent;
+    display: block;
+    padding: 0;
+    margin: 0;
+    border: none;
+    box-shadow: none;
+}
+.card-deck .card[aria-hidden="true"] {
+    opacity: 1; /* keep fully visible to avoid visual 'borders' */
+    pointer-events: none;
+}
+
+/* positions for stacked look */
+.card-deck .card.stack-0 { transform: translate3d(0,0,0) scale(1); z-index: 40; }
+.card-deck .card.stack-1 { transform: translate3d(-12px,12px,-20px) rotate(-2deg) scale(0.98); z-index: 30; }
+.card-deck .card.stack-2 { transform: translate3d(-22px,22px,-40px) rotate(-4deg) scale(0.96); z-index: 20; }
+.card-deck .card.stack-3 { transform: translate3d(-34px,34px,-60px) rotate(-6deg) scale(0.94); z-index: 10; }
+.card-deck .card.move-out-left { transform: translate3d(-120%, -10%, 0) rotate(-20deg) scale(0.9); opacity: 0; }
+.card-deck .card.move-in-from-right { transform: translate3d(120%, 10%, 0) rotate(8deg) scale(0.98); opacity: 0; }
+
+/* mobile: keep fixed aspect ratios and reorder using CSS grid */
+@media (max-width: 992px) {
+    /* Mobile layout: info taxi, images taxi, info van, images van */
+    .vehicle-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    /* Place taxi info first */
+    .vehicle-taxi-info {
+        order: 1;
+    }
+    
+    /* Place taxi images second */
+    .vehicle-taxi {
+        order: 2;
+    }
+    
+    /* Place van info third */
+    .vehicle-van-info {
+        order: 3;
+    }
+    
+    /* Place van images fourth */
+    .vehicle-van {
+        order: 4;
+    }
+    
+    /* Taxi: keep 1:1 square ratio */
+    .vehicle-taxi .card-deck {
+        height: 420px;
+        max-width: 420px;
+    }
+    
+    /* Van: keep 3:4 horizontal ratio */
+    .vehicle-van .card-deck {
+        height: 420px;
+        max-width: 420px;
+    }
 }
 
 .vehicle-image {
@@ -907,6 +1033,29 @@ p {
     z-index: 1;
 }
 
+/* For vehicle image decks we don't want the blue decoration covering the cards */
+.vehicle-image .image-decoration {
+    display: none !important;
+}
+
+/* Make sure card images inside vehicle-image are positioned and visible above any background layers */
+.vehicle-image .card-deck { position: relative; width: 100%; /* keep deck height from .card-deck rule (340px / responsive) */ }
+/* Ensure card images inside vehicle-image are absolutely positioned and fill the deck
+   (this overrides the more generic `.vehicle-image img { position: relative; }` rule) */
+.vehicle-image .card-deck .card {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 1.5rem;
+    box-shadow: 0 20px 50px rgba(2,6,23,0.35);
+    object-fit: contain; /* show full image without cropping */
+    background: var(--light-gray);
+}
+
+/* Remove focus outline on cards to avoid browser blue ring */
+.card:focus { outline: none; }
+
 .vehicle-info .sub-title {
     color: var(--primary);
     font-weight: 700;
@@ -914,6 +1063,12 @@ p {
     font-size: 0.875rem;
     letter-spacing: 2px;
     margin-bottom: 1rem;
+}
+
+.vehicle-info h2 {
+    font-size: clamp(1.75rem, 4vw, 2rem);
+    margin-bottom: 1.5rem;
+    color: var(--text);
 }
 
 .features-list {
@@ -962,19 +1117,18 @@ p {
 .covenas-card {
     display: grid;
     grid-template-columns: 1fr 220px;
-    gap: 1.5rem;
+    gap: 1rem;
     align-items: center;
     padding: 1.5rem;
     background: linear-gradient(180deg, var(--secondary) 0%, var(--white) 100%);
     border-radius: 1rem;
-    border: 1px solid var(--border);
+    border: 1px solid var(--secondary-blue);
     box-shadow: var(--shadow-sm);
-    margin-bottom: 0.75rem;
 }
 
 .covenas-card h3 {
     margin: 0 0 0.5rem 0;
-    color: var(--primary);
+    color: var(--secondary-blue);
 }
 
 .covenas-left p { color: var(--text-light); margin-bottom: 0.5rem; }
@@ -982,8 +1136,27 @@ p {
 .covenas-note { font-size: 0.9rem; color: var(--text-light); margin-top: 0.5rem; }
 
 .covenas-cta { display: flex; flex-direction: column; gap: 0.6rem; align-items: stretch; justify-content: center; }
-.btn-covenas-whatsapp { padding: 0.85rem 1rem; font-weight: 700; }
-.btn-covenas-form { padding: 0.6rem 0.9rem; }
+.btn-covenas-whatsapp { 
+    padding: 0.85rem 1rem; 
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--secondary-blue) 0%, var(--secondary-blue-light) 100%);
+    color: var(--white);
+}
+
+.btn-covenas-whatsapp:hover {
+    box-shadow: 0 8px 20px rgba(30, 64, 175, 0.3);
+}
+.btn-covenas-form { 
+    padding: 0.6rem 0.9rem;
+    background-color: rgba(30, 64, 175, 0.15);
+    border: 2px solid var(--secondary-blue);
+    color: var(--secondary-blue);
+}
+
+.btn-covenas-form:hover {
+    background-color: var(--secondary-blue);
+    color: var(--white);
+}
 .covenas-price { display: block; text-align: center; color: var(--text); margin-top: 0.25rem; font-weight: 700; }
 
 /* Smaller screens: stack the Coveñas card */
@@ -1178,6 +1351,12 @@ select:focus {
     margin-top: 1rem;
     padding: 1.25rem 2rem;
     font-size: 1.125rem;
+    background: linear-gradient(135deg, var(--secondary-blue) 0%, var(--secondary-blue-light) 100%);
+    color: var(--white);
+}
+
+.btn-submit:hover {
+    box-shadow: 0 8px 20px rgba(30, 64, 175, 0.3);
 }
 
 /* FOOTER */
@@ -1258,8 +1437,8 @@ footer {
 /* side-dots removed */
 
 /* Spacing between carousel and Coveñas card */
-.dest-carousel-auto { margin-bottom: 2rem; }
-.covenas-card { margin-top: 1.5rem; }
+.dest-carousel-auto { margin-bottom: 1rem; }
+.covenas-card { margin-top: 0.5rem; }
 
 .whatsapp-float svg {
     width: 100%;
@@ -1464,7 +1643,8 @@ footer {
 
     .hero-slide { background-position: center top; }
 
-    .hero-content h1 { font-size: clamp(1.25rem, 5vw, 1.6rem); text-align: center; }
+    /* Hero heading reduced ~20% on mobile screens */
+    .hero-content h1 { font-size: clamp(1rem, 4vw, 1.28rem); text-align: center; }
     .hero-content { text-align: center; padding: 1rem; }
     .sticker-left, .sticker-right { display: none; }
 
@@ -1475,13 +1655,13 @@ footer {
     }
 
     .hero h1 {
-        font-size: clamp(1.75rem, 6vw, 2.5rem);
+        font-size: clamp(1.225rem, 4.2vw, 1.75rem);
         line-height: 1.2;
         margin-bottom: 1.25rem;
     }
 
     .hero p {
-        font-size: clamp(1rem, 3vw, 1.125rem);
+        font-size: clamp(0.7rem, 2.1vw, 0.7875rem);
         margin-bottom: 2rem;
         line-height: 1.7;
     }

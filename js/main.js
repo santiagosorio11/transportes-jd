@@ -158,6 +158,8 @@ const routes = rawData
         id: acc.length + 1,
         name: `${MONTERIA_ORIGIN_NAME} - ${item.name.replace(/\s*\(.+\)$/,'')}`,
         time: item.time || '',
+        // numeric price for formatting later and a distance label if needed
+        price: item.price || 0,
         distance: `$${item.price?.toString() || ''}`,
         center: [ (originCoords[0] + item.coords[0]) / 2, (originCoords[1] + item.coords[1]) / 2 ],
         zoom: 9,
@@ -589,5 +591,69 @@ document.addEventListener('DOMContentLoaded', () => {
         container.addEventListener('touchend', pointerUp);
 
         // Note: do not activate drag on hover. Drag starts on mousedown and ends on mouseup.
+    })();
+
+    // 10. Vehicle "card deck" carousels (autoplay every 5s, baraja-style)
+    (function initVehicleDecks() {
+        const decks = document.querySelectorAll('.card-deck');
+        if (!decks.length) return;
+
+        decks.forEach(deck => {
+            const nodeCards = Array.from(deck.querySelectorAll('.card'));
+            if (!nodeCards.length) return;
+
+            // visual order array (index 0 = top card)
+            const cards = nodeCards.slice();
+
+            function applyStack() {
+                cards.forEach((card, idx) => {
+                    card.classList.remove('stack-0','stack-1','stack-2','stack-3','move-out-left','move-in-from-right');
+                    if (idx === 0) card.setAttribute('aria-hidden', 'false'); else card.setAttribute('aria-hidden', 'true');
+
+                    if (idx === 0) card.classList.add('stack-0');
+                    else if (idx === 1) card.classList.add('stack-1');
+                    else if (idx === 2) card.classList.add('stack-2');
+                    else if (idx === 3) card.classList.add('stack-3');
+                    else card.classList.add('stack-3');
+                });
+            }
+
+            function showNext() {
+                const top = cards[0];
+                if (!top) return;
+                top.classList.add('move-out-left');
+                top.setAttribute('aria-hidden', 'true');
+
+                // after transition remove and rotate
+                setTimeout(() => {
+                    cards.push(cards.shift());
+                    applyStack();
+                }, 700);
+            }
+
+            // initial
+            applyStack();
+
+            // autoplay: try to read data-autoplay from nearest .vehicle-image parent, otherwise default 5000
+            let autoplay = 5000;
+            const parent = deck.closest('.vehicle-image');
+            if (parent && parent.dataset && parent.dataset.autoplay) {
+                const parsed = parseInt(parent.dataset.autoplay, 10);
+                if (!isNaN(parsed)) autoplay = parsed;
+            }
+
+            let timer = setInterval(showNext, autoplay);
+
+            // Pause on hover/touch (use deck element)
+            deck.addEventListener('mouseenter', () => { clearInterval(timer); timer = null; });
+            deck.addEventListener('mouseleave', () => { if (!timer) timer = setInterval(showNext, autoplay); });
+
+            // Click to advance (mobile friendly)
+            deck.addEventListener('click', () => {
+                if (timer) { clearInterval(timer); timer = null; }
+                showNext();
+                setTimeout(() => { if (!timer) timer = setInterval(showNext, autoplay); }, autoplay);
+            });
+        });
     })();
 });
