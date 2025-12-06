@@ -809,7 +809,7 @@ p {
     border-radius: 1.5rem;
     box-shadow: var(--shadow);
     transition: all 0.4s;
-    border: 1px solid transparent;
+    border: 1px solid var(--border);
     position: relative;
     overflow: hidden;
 }
@@ -1008,7 +1008,7 @@ p {
 /* Mobile: make card-deck images smaller while keeping 1:1 aspect ratio */
 @media (max-width: 768px) {
     .card-deck {
-        max-width: 300px; /* smaller square on mobile */
+        max-width: 340px; /* smaller square on mobile */
         width: 100%;
         margin: 0 auto;
     }
