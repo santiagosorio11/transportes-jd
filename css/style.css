@@ -1005,6 +1005,28 @@ p {
     }
 }
 
+/* Mobile: make card-deck images smaller while keeping 1:1 aspect ratio */
+@media (max-width: 768px) {
+    .card-deck {
+        max-width: 300px; /* smaller square on mobile */
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .vehicle-taxi .card-deck,
+    .vehicle-van .card-deck {
+        height: 260px; /* match width for 1:1 */
+        max-width: 260px;
+    }
+
+    /* Ensure absolute cards still fill the smaller deck */
+    .card-deck .card {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
 .vehicle-image {
     position: relative;
 }
