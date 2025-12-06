@@ -84,7 +84,7 @@ const rawData = [
     {
         "type": "destination",
         "name": "Paso Nuevo",
-        "price": 210000,
+        "price": 220000,
         "time": "2 h",
         "origin": "Montería (Ciudad)",
         "coords": [9.3280, -75.9550],
@@ -93,7 +93,7 @@ const rawData = [
     {
         "type": "destination",
         "name": "San Bernardo del Viento",
-        "price": 210000,
+        "price": 220000,
         "time": "1 h 50 min",
         "origin": "Montería (Ciudad)",
         "coords": [9.3533, -75.9536],
