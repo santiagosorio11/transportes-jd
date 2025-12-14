@@ -1,0 +1,15 @@
+{
+  "name": "Taxi Seguro Aeropuerto Montería",
+  "short_name": "Taxi Seguro",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#FDD835",
+  "icons": [
+    {
+      "src": "/assets/favicon.ico",
+      "sizes": "180x180",
+      "type": "image/x-icon"
+    }
+  ]
+}
